@@ -269,6 +269,150 @@
       <div id="cart-total">Total: 0 DH</div>
       <button id="whatsapp-btn">Envoyer via WhatsApp</button>
     </div>
+    <script>
+      // 🛒 السلة العالمية
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const cartIcon = document.getElementById('floating-cart');
+      const cartPopup = document.getElementById('cart-popup');
+      const closeBtn = document.querySelector('#cart-popup .close-btn');
+      const cartCount = document.getElementById('cart-count');
+      const cartItemsContainer = document.getElementById('cart-items');
+      const cartTotal = document.getElementById('cart-total');
+      const whatsappBtn = document.getElementById('whatsapp-btn');
+
+      // تحديث واجهة السلة عند تحميل الصفحة
+      updateCart();
+
+      // فتح / إغلاق السلة
+      cartIcon.addEventListener('click', () => cartPopup.classList.add('active'));
+      closeBtn.addEventListener('click', () => cartPopup.classList.remove('active'));
+
+      // تحميل المنتجات من API وعرضها
+      async function loadProducts() {
+        try {
+          const res = await fetch('https://para-petit-prix.vercel.app/api/products');
+          const products = await res.json();
+
+          const container = document.getElementById('productList');
+          container.innerHTML = '';
+
+          products.forEach((p) => {
+            if (p.visibility !== 'oui' || p.category !== 'cheveux_beaute') return;
+
+            const card = document.createElement('div');
+            card.className = 'col-md-6 col-lg-3 mb-4';
+
+            const imageUrl =
+              p.image && p.image.trim() !== ''
+                ? p.image
+                : 'https://i.postimg.cc/MTVhPR2k/Logo-Wiz-30092025-183434.png';
+
+            card.innerHTML = `
+          <div class="medicine-card">
+            <img src="${imageUrl}" alt="${p.name}" />
+            <div class="card-body">
+              <h5 class="card-title">${p.name}</h5>
+              <p class="card-text text-muted">${
+                p.description && p.description.trim() !== ''
+                  ? p.description
+                  : p.category
+                  ? p.category.replace('_', ' ')
+                  : 'Sans description'
+              }</p>
+              <p class="price">${Number(p.price).toFixed(2)} DH</p>
+              <p class="stock">Stock : <span>${p.quantity}</span></p>
+              <a href="#"
+                 class="btn btn-outline-primary btn-sm w-100 add-to-cart"
+                 data-title="${p.name}"
+                 data-price="${Number(p.price)}"
+                 data-img="${imageUrl}">
+                <i class="fas fa-cart-plus me-2"></i> Ajouter au panier
+              </a>
+            </div>
+          </div>
+        `;
+            container.appendChild(card);
+          });
+
+          // ✅ ربط كل زر مع السلة
+          document.querySelectorAll('.add-to-cart').forEach((btn) => {
+            btn.addEventListener('click', (e) => {
+              e.preventDefault();
+              const title = btn.getAttribute('data-title');
+              const price = parseFloat(btn.getAttribute('data-price'));
+              const imgSrc = btn.getAttribute('data-img');
+              addToCart(title, price, imgSrc);
+            });
+          });
+        } catch (err) {
+          console.error('Erreur de chargement des produits:', err);
+        }
+      }
+
+      // 🛒 إضافة منتج للسلة
+      function addToCart(title, price, imgSrc) {
+        const existing = cart.find((item) => item.title === title);
+        if (existing) {
+          existing.qty++;
+        } else {
+          cart.push({ title, price, qty: 1, imgSrc });
+        }
+
+        // حفظ السلة في localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // تحديث واجهة السلة
+        updateCart();
+      }
+
+      // تحديث واجهة السلة
+      function updateCart() {
+        cartCount.innerText = cart.reduce((acc, item) => acc + item.qty, 0);
+        cartItemsContainer.innerHTML = '';
+
+        cart.forEach((item, index) => {
+          const div = document.createElement('div');
+          div.className = 'cart-item d-flex align-items-center mb-2';
+          div.innerHTML = `
+        <img src="${item.imgSrc}" alt="${
+          item.title
+        }" style="width:60px; height:60px; object-fit:cover; margin-right:10px;">
+        <div class="cart-item-details flex-grow-1">
+          <span>${item.title} x${item.qty}</span><br>
+          <span>${(item.price * item.qty).toFixed(2)} DH</span>
+        </div>
+        <button data-index="${index}" class="btn btn-sm btn-danger">&times;</button>
+      `;
+          cartItemsContainer.appendChild(div);
+
+          div.querySelector('button').addEventListener('click', () => {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+          });
+        });
+
+        const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+        cartTotal.innerText = `Total: ${total.toFixed(2)} DH`;
+      }
+
+      // إرسال الطلب عبر واتساب
+      whatsappBtn.addEventListener('click', () => {
+        if (cart.length === 0) return alert('Votre panier est vide !');
+        let message = 'Bonjour, je souhaite commander :%0A';
+        cart.forEach((item) => {
+          message += `- ${item.title} x${item.qty} : ${(item.price * item.qty).toFixed(2)} DH%0A`;
+        });
+        const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+        message += `Total: ${total.toFixed(2)} DH`;
+
+        const whatsappNumber = '212601862102';
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+      });
+
+      document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
