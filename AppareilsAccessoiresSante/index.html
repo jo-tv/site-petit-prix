@@ -52,26 +52,29 @@
     />
     <link
       rel="stylesheet"
-      href="../css/styles.css"
+      href="../public/css/styles.css"
     />
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg"
+      class="navbar navbar-expand-lg shadow-sm"
       id="mainNavbar"
+      style="background: #ffffff; border-bottom: 2px solid #e0e0e0"
     >
       <div class="container">
         <a
-          class="navbar-brand"
-          href="#"
+          class="navbar-brand d-flex align-items-center gap-2"
+          href="/"
         >
           <img
             class="logo"
-            src="../img/icon-512.png"
+            src="../public/img/icon-512.png"
             alt=""
+            style="width: 40px; height: 40px; border-radius: 10px"
           />
-          Para Petit Prix
+          <span style="font-weight: 700; color: #2e7d32; font-size: 1.2em">Para Petit Prix</span>
         </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -83,74 +86,95 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div
           class="collapse navbar-collapse"
           id="navbarNav"
         >
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item text-center">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
-                aria-current="page"
-                href="../index.html"
-                >HOME</a
+                href="/"
               >
+                <i class="fa-solid fa-house"></i> Accueil
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                href="../ProduitPromotion/"
+              >
+                <i
+                  class="fa-solid fa-tags"
+                  style="color: #2e7d32"
+                ></i>
+                Produits en Promotion
+              </a>
+            </li>
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="../SoinsdelapeauCosmetiques/"
-                >Soins de la peau & Cosmétiques</a
               >
+                <i class="fa-solid fa-spa"></i> Soins de la peau & Cosmétiques
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="../CheveuxBeaute/"
-                >Cheveux & Beauté</a
               >
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Cheveux & Beauté
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link"
                 href="../VitaminesComplementsAlimentaires/"
-                >Vitamines & Compléments Alimentaires</a
               >
+                <i class="fa-solid fa-capsules"></i> Vitamines & Compléments Alimentaires
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="#latest-medicines"
-                >Maternité & Produits Bébé</a
               >
+                <i class="fa-solid fa-baby"></i> Maternité & Produits Bébé
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="../HygieneSoinsPersonnels/"
-                >Hygiène & Soins Personnels</a
               >
+                <i class="fa-solid fa-soap"></i> Hygiène & Soins Personnels
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="#latest-medicines"
-                >Nutrition & Produits Minceur</a
               >
+                <i class="fa-solid fa-apple-whole"></i> Nutrition & Produits Minceur
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="#latest-medicines"
-                >Huiles Essentielles & Aromathérapie</a
               >
+                <i class="fa-solid fa-droplet"></i> Huiles Essentielles & Aromathérapie
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link active"
                 href="../AppareilsAccessoiresSante/"
-                >Appareils & Accessoires Santé</a
               >
+                <i class="fa-solid fa-stethoscope"></i> Appareils & Accessoires Santé
+              </a>
             </li>
           </ul>
         </div>
@@ -191,8 +215,8 @@
             <ul class="list-unstyled">
               <li><a href="#about">À propos</a></li>
               <li><a href="#services">Services</a></li>
-              <li><a href="#products">Produits</a></li>
-              <li><a href="#latest-medicines">Nouveautés</a></li>
+              <li><a href="#blog">Produits</a></li>
+              <li><a href="#products">Nouveautés</a></li>
               <li><a href="#offers">Offres</a></li>
             </ul>
           </div>
@@ -202,10 +226,9 @@
             <h5>Support</h5>
             <ul class="list-unstyled">
               <li><a href="#faq">FAQ</a></li>
-              <li><a href="#consultation">Prendre rendez-vous</a></li>
               <li><a href="#contact">Contactez-nous</a></li>
-              <li><a href="#">Politique de confidentialité</a></li>
-              <li><a href="#">Conditions d’utilisation</a></li>
+              <li><a href="../Politiquedeconfidentialité/">Politique de confidentialité</a></li>
+              <li><a href="../Conditionsd’utilisation/">Conditions d’utilisation</a></li>
             </ul>
           </div>
 
@@ -464,6 +487,6 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="../js/script.js"></script>
+    <script src="../public/js/script.js"></script>
   </body>
 </html>

@@ -52,26 +52,29 @@
     />
     <link
       rel="stylesheet"
-      href="./css/styles.css"
+      href="./public/css/styles.css"
     />
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg"
+      class="navbar navbar-expand-lg shadow-sm"
       id="mainNavbar"
+      style="background: #fff; border-bottom: 2px solid #e0e0e0"
     >
       <div class="container">
         <a
-          class="navbar-brand"
+          class="navbar-brand d-flex align-items-center gap-2"
           href="#"
         >
           <img
             class="logo"
-            src="./img/icon-512.png"
+            src="./public/img/icon-512.png"
             alt=""
+            style="width: 40px; height: 40px; border-radius: 10px"
           />
-          Para Petit Prix
+          <span style="font-weight: 700; color: #2e7d32; font-size: 1.2em">Para Petit Prix</span>
         </a>
+
         <button
           class="navbar-toggler"
           type="button"
@@ -83,58 +86,96 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div
           class="collapse navbar-collapse"
           id="navbarNav"
         >
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item text-center">
+          <ul class="navbar-nav ms-auto text-center">
+            <li class="nav-item">
               <a
                 class="nav-link active"
-                aria-current="page"
                 href="#about"
-                >About Us</a
               >
+                <i class="fa-solid fa-circle-info"></i> À propos
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="#services"
-                >Services</a
               >
+                <i class="fa-solid fa-briefcase-medical"></i> Services
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="#blog"
-                >Products</a
               >
+                <i class="fa-solid fa-boxes-stacked"></i> Produits
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="#products"
-                >New Arrivals</a
               >
+                <i class="fa-solid fa-star"></i> Nouveautés
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="#offers"
-                >Offers</a
               >
+                <i
+                  class="fa-solid fa-percent"
+                  style="color: #d32f2f"
+                ></i>
+                Offres
+              </a>
             </li>
-            <li class="nav-item text-center">
+            <li class="nav-item">
               <a
                 class="nav-link"
                 href="#reclamations"
-                >Contact</a
               >
+                <i class="fa-solid fa-envelope"></i> Contact
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <!-- 🌿 تحسين التصميم -->
+    <style>
+      #mainNavbar .nav-link {
+        color: #333;
+        font-weight: 500;
+        padding: 10px 14px;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+      }
+      #mainNavbar .nav-link i {
+        margin-right: 6px;
+        color: #2e7d32;
+      }
+      #mainNavbar .nav-link:hover {
+        background-color: #e8f5e9;
+        color: #1b5e20;
+        transform: translateY(-2px);
+      }
+      #mainNavbar .nav-link.active {
+        background-color: #2e7d32;
+        color: #fff !important;
+        font-weight: 600;
+      }
+      #mainNavbar .nav-link.active i {
+        color: #fff;
+      }
+    </style>
 
     <section
       id="hero"
@@ -173,7 +214,7 @@
           <!-- صورة -->
           <div class="col-lg-6">
             <img
-              src="./img/2.jpg"
+              src="./public/img/2.jpg"
               alt="À propos de Petit Prix"
               class="img-fluid about-us-img"
             />
@@ -1094,8 +1135,8 @@
             <ul class="list-unstyled">
               <li><a href="#about">À propos</a></li>
               <li><a href="#services">Services</a></li>
-              <li><a href="#">Produits</a></li>
-              <li><a href="#latest-medicines">Nouveautés</a></li>
+              <li><a href="#blog">Produits</a></li>
+              <li><a href="#products">Nouveautés</a></li>
               <li><a href="#offers">Offres</a></li>
             </ul>
           </div>
@@ -1105,10 +1146,9 @@
             <h5>Support</h5>
             <ul class="list-unstyled">
               <li><a href="#faq">FAQ</a></li>
-              <li><a href="#consultation">Prendre rendez-vous</a></li>
               <li><a href="#contact">Contactez-nous</a></li>
-              <li><a href="#">Politique de confidentialité</a></li>
-              <li><a href="#">Conditions d’utilisation</a></li>
+              <li><a href="./Politiquedeconfidentialité/">Politique de confidentialité</a></li>
+              <li><a href="./Conditionsd’utilisation/">Conditions d’utilisation</a></li>
             </ul>
           </div>
 
@@ -1252,6 +1292,6 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./js/script.js"></script>
+    <script src="./public/js/script.js"></script>
   </body>
 </html>
