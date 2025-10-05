@@ -309,28 +309,43 @@
                 : 'https://i.postimg.cc/MTVhPR2k/Logo-Wiz-30092025-183434.png';
 
             card.innerHTML = `
-          <div class="medicine-card">
-            <img src="${imageUrl}" alt="${p.name}" />
-            <div class="card-body">
-              <h5 class="card-title">${p.name}</h5>
-              <p class="card-text text-muted">${
-                p.description && p.description.trim() !== ''
-                  ? p.description
-                  : p.category
-                  ? p.category.replace('_', ' ')
-                  : 'Sans description'
-              }</p>
-              <p class="price">${Number(p.price).toFixed(2)} DH</p>
-              <p class="stock">Stock : <span>${p.quantity}</span></p>
-              <a href="#"
-                 class="btn btn-outline-primary btn-sm w-100 add-to-cart"
-                 data-title="${p.name}"
-                 data-price="${Number(p.price)}"
-                 data-img="${imageUrl}">
-                <i class="fas fa-cart-plus me-2"></i> Ajouter au panier
-              </a>
+<div class="medicine-card">
+              <img src="${imageUrl}" alt="${p.name}">
+            
+              <div class="card-body" style="padding: 12px;">
+                <h5 class="card-title" style="font-weight: 600; margin-bottom: 6px;">
+                  <i class="fa-solid fa-capsules text-primary"></i> ${p.name}
+                </h5>
+            
+                <p class="card-text text-muted" style="font-size: 0.9em; min-height: 38px;">
+                  ${
+                    p.description && p.description.trim() !== ''
+                      ? p.description
+                      : p.category
+                      ? p.category.replace('_', ' ')
+                      : 'Sans description'
+                  }
+                </p>
+            
+                <p class="price" style="font-size: 1.1em; font-weight: bold; color: #2e7d32; margin: 8px 0 4px;">
+                  <i class="fa-solid fa-tag"></i> ${Number(p.price).toFixed(2)} DH
+                </p>
+            
+                <p class="stock" style="font-size: 0.9em; color: #555; margin-bottom: 10px;">
+                  <i class="fa-solid fa-boxes-stacked"></i> Stock :
+                  <span style="font-weight: 600;">${p.quantity}</span>
+                </p>
+            
+                <a href="#"
+                  class="btn btn-primary btn-sm w-100 add-to-cart"
+                  data-title="${p.name}"
+                  data-price="${Number(p.price)}"
+                  data-img="${imageUrl}"
+                  style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 500;">
+                  <i class="fas fa-cart-plus"></i> Ajouter au panier
+                </a>
+              </div>
             </div>
-          </div>
         `;
             container.appendChild(card);
           });
@@ -379,8 +394,35 @@
           item.title
         }" style="width:60px; height:60px; object-fit:cover; margin-right:10px;">
         <div class="cart-item-details flex-grow-1">
-          <span>${item.title} x${item.qty}</span><br>
-          <span>${(item.price * item.qty).toFixed(2)} DH</span>
+          <span style="color:red;margin:5px auto">${item.title}</span>
+          <span style="
+            color: #000;
+            margin: 6px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95em;
+            gap: 8px;
+            background: #f8f9fa;
+            padding: 6px 10px;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+          ">
+            <span style="display: flex; align-items: center; gap: 5px;">
+              <i class="fa-solid fa-tag" style="color:#2e7d32;"></i>
+              ${item.price}
+            </span>
+          
+            <span style="display: flex; align-items: center; gap: 5px;">
+              <i class="fa-solid fa-xmark" style="color:#555;"></i>
+              ${item.qty}
+            </span>
+          
+            <span style="display: flex; align-items: center; gap: 5px; font-weight: 600; color:#d32f2f;">
+              <i class="fa-solid fa-coins"></i>
+              ${(item.price * item.qty).toFixed(2)} DH
+            </span>
+          </span>
         </div>
         <button data-index="${index}" class="btn btn-sm btn-danger">&times;</button>
       `;

@@ -1197,33 +1197,43 @@
             card.className = 'swiper-slide'; // مهم للـ Swiper
 
             card.innerHTML = `
-          <div class="product-card">
-          <img 
-            <img 
-            src="${imageUrl}" 
-            alt="${p.name}" 
-            onerror="this.onerror=null;this.src='https://via.placeholder.com/200x200?text=Produit';"
-          />
-            <div class="card-body">
-              <h5 class="card-title">${p.name}</h5>
-              <p class="card-text text-muted">${
-                p.description && p.description.trim() !== ''
-                  ? p.description
-                  : p.category
-                  ? p.category.replace('_', ' ')
-                  : 'Sans description'
-              }</p>
-              <p class="price">${Number(p.price).toFixed(2)} DH</p>
-              <p class="stock">Stock : <span>${p.quantity}</span></p>
-              <a href="#"
-                 class="btn btn-outline-primary btn-sm w-100 add-to-cart "
-                 data-title="${p.name}"
-                 data-price="${Number(p.price)}"
-                 data-img="${imageUrl}">
-                <i class="fas fa-cart-plus me-2"></i> Ajouter au panier
-              </a>
+             <div class="medicine-card">
+              <img src="${imageUrl}" alt="${p.name}">
+            
+              <div class="card-body" style="padding: 12px;">
+                <h5 class="card-title" style="font-weight: 600; margin-bottom: 6px;">
+                  <i class="fa-solid fa-capsules text-primary"></i> ${p.name}
+                </h5>
+            
+                <p class="card-text text-muted" style="font-size: 0.9em; min-height: 38px;">
+                  ${
+                    p.description && p.description.trim() !== ''
+                      ? p.description
+                      : p.category
+                      ? p.category.replace('_', ' ')
+                      : 'Sans description'
+                  }
+                </p>
+            
+                <p class="price" style="font-size: 1.1em; font-weight: bold; color: #2e7d32; margin: 8px 0 4px;">
+                  <i class="fa-solid fa-tag"></i> ${Number(p.price).toFixed(2)} DH
+                </p>
+            
+                <p class="stock" style="font-size: 0.9em; color: #555; margin-bottom: 10px;">
+                  <i class="fa-solid fa-boxes-stacked"></i> Stock :
+                  <span style="font-weight: 600;">${p.quantity}</span>
+                </p>
+            
+                <a href="#"
+                  class="btn btn-primary btn-sm w-100 add-to-cart"
+                  data-title="${p.name}"
+                  data-price="${Number(p.price)}"
+                  data-img="${imageUrl}"
+                  style="display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-weight: 500;">
+                  <i class="fas fa-cart-plus"></i> Ajouter au panier
+                </a>
+              </div>
             </div>
-          </div>
         `;
             container.appendChild(card);
           });

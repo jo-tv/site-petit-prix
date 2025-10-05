@@ -365,6 +365,11 @@ h6 {
   color: #27ae60;
   margin-bottom: 5px;
 }
+.divPrice {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}
 
 .stock {
   font-size: 0.85rem;
