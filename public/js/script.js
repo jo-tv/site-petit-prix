@@ -174,7 +174,7 @@ document.getElementById('reclamationForm').addEventListener('submit', function (
 });
 
 // cards wattsap
-const cartIcon = document.getElementById('floating-cart');
+let cartIcon = document.getElementById('floating-cart');
 const cartPopup = document.getElementById('cart-popup');
 const closeBtn = document.querySelector('#cart-popup .close-btn');
 const cartCount = document.getElementById('cart-count');

@@ -283,7 +283,7 @@
       // 🛒 السلة العالمية
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-      const cartIcon = document.getElementById('floating-cart');
+      let cartIcon = document.getElementById('floating-cart');
       const cartPopup = document.getElementById('cart-popup');
       const closeBtn = document.querySelector('#cart-popup .close-btn');
       const cartCount = document.getElementById('cart-count');
