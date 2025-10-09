@@ -310,3 +310,6 @@ document.getElementById('whatsappForm').addEventListener('submit', function (e) 
   // ouvrir WhatsApp
   window.open(whatsappURL, '_blank');
 });
+
+
+  

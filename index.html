@@ -2,6 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/public/favicon.ico"
+    />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
@@ -1009,7 +1015,10 @@
               ></div>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div
+            class="col-lg-6"
+            id="contactera"
+          >
             <h4
               class="mb-4"
               style="font-weight: bold; color: #2c3e50"
@@ -1146,7 +1155,7 @@
             <h5>Support</h5>
             <ul class="list-unstyled">
               <li><a href="#faq">FAQ</a></li>
-              <li><a href="#contact">Contactez-nous</a></li>
+              <li><a href="#contactera">Contactez-nous</a></li>
               <li><a href="./Politiquedeconfidentialité/">Politique de confidentialité</a></li>
               <li><a href="./Conditionsd’utilisation/">Conditions d’utilisation</a></li>
             </ul>
@@ -1293,5 +1302,13 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="./public/js/script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('/sw.js')
+          .then(() => console.log('✅ Service Worker enregistré'))
+          .catch((err) => console.error('❌ SW erreur:', err));
+      }
+    </script>
   </body>
 </html>

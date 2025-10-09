@@ -1,0 +1,23 @@
+{
+  "name": "Site Petit Prix",
+  "short_name": "PetitPrix",
+  "description": "Un site pour découvrir les produits de soins et beauté à petit prix.",
+  "start_url": "/site-petit-prix/index.html",
+  "scope": "/site-petit-prix/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ff6f61",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/site-petit-prix/public/img/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/site-petit-prix/public/img/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

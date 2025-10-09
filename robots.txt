@@ -1,0 +1,10 @@
+# robots.txt for site-petit-prix
+User-agent: *
+Allow: /
+
+# منع الوصول إلى ملفات أو مجلدات معينة (اختياري)
+Disallow: /admin/
+Disallow: /private/
+
+# خريطة الموقع (sitemap)
+Sitemap: https://jo-tv.github.io/site-petit-prix/sitemap.xml
