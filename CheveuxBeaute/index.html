@@ -56,7 +56,7 @@
     />
   </head>
   <body>
- <nav
+    <nav
       class="navbar navbar-expand-lg shadow-sm"
       id="mainNavbar"
       style="background: #ffffff; border-bottom: 2px solid #e0e0e0"
@@ -101,11 +101,17 @@
               </a>
             </li>
             <li class="nav-item">
-  <a class="nav-link" href="../ProduitPromotion/">
-    <i class="fa-solid fa-tags" style="color:#2e7d32;"></i>
-    Produits en Promotion
-  </a>
-</li>
+              <a
+                class="nav-link"
+                href="../ProduitPromotion/"
+              >
+                <i
+                  class="fa-solid fa-tags"
+                  style="color: #2e7d32"
+                ></i>
+                Produits en Promotion
+              </a>
+            </li>
             <li class="nav-item">
               <a
                 class="nav-link"
@@ -124,7 +130,7 @@
             </li>
             <li class="nav-item">
               <a
-                class="nav-link "
+                class="nav-link"
                 href="../VitaminesComplementsAlimentaires/"
               >
                 <i class="fa-solid fa-capsules"></i> Vitamines & Compléments Alimentaires
@@ -164,7 +170,7 @@
             </li>
             <li class="nav-item">
               <a
-                class="nav-link "
+                class="nav-link"
                 href="../AppareilsAccessoiresSante/"
               >
                 <i class="fa-solid fa-stethoscope"></i> Appareils & Accessoires Santé
@@ -272,7 +278,15 @@
       <div id="cart-total">Total: 0 DH</div>
       <button id="whatsapp-btn">Envoyer via WhatsApp</button>
     </div>
-    <script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="../public/js/script.js"></script>
+        <script>
       // 🛒 السلة العالمية
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -458,14 +472,5 @@
 
       document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="./public/js/script.js"></script>
   </body>
 </html>
