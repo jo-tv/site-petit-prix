@@ -313,3 +313,11 @@ document.getElementById('whatsappForm').addEventListener('submit', function (e) 
 
 
   
+const slides = document.querySelectorAll('.swiper-slide');
+const swiper = new Swiper('.swiper', {
+  slidesPerView: 3,
+  spaceBetween: 10,
+  loop: slides.length > 3, // ✅ تفعيل loop فقط عند الحاجة
+  pagination: { el: '.swiper-pagination' },
+  navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+});
