@@ -2,23 +2,23 @@
 const CACHE_NAME = 'site-petit-prix-v1';
 const urlsToCache = [
   '/',
-  '/sitemap.xml',
-  '/robots.txt',
+  '/site-petit-prix/sitemap.xml',
+  '/site-petit-prix/robots.txt',
 
   // 🖼️ مجلدات وأصول الموقع
-  '/public/css/styles.css',
-  '/public/js/script.js',
-  '/public/img/icon-512.png',
+  '/site-petit-prix/public/css/styles.css',
+  '/site-petit-prix/public/js/script.js',
+  '/site-petit-prix/public/img/icon-512.png',
 
   // 📄 صفحاتك الأساسية
-  '/SoinsdelapeauCosmetiques/',
-  '/ProduitPromotion/',
-  '/CheveuxBeaute/',
-  '/VitaminesComplementsAlimentaires/',
-  '/HygieneSoinsPersonnels/',
-  '/AppareilsAccessoiresSante/',
-  '/Politiquedeconfidentialite/',
-  '/Conditionsdutilisation/',
+  '/site-petit-prix/SoinsdelapeauCosmetiques/',
+  '/site-petit-prix/ProduitPromotion/',
+  '/site-petit-prix/CheveuxBeaute/',
+  '/site-petit-prix/VitaminesComplementsAlimentaires/',
+  '/site-petit-prix/HygieneSoinsPersonnels/',
+  '/site-petit-prix/AppareilsAccessoiresSante/',
+  '/site-petit-prix/Politiquedeconfidentialite/',
+  '/site-petit-prix/Conditionsdutilisation/',
 ];
 
 self.addEventListener('install', (event) => {
