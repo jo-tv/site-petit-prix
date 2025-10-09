@@ -7,9 +7,9 @@ const urlsToCache = [
   '/site-petit-prix/robots.txt',
 
   // 🖼️ مجلدات وأصول الموقع (عدّل حسب موقع ملفاتك)
-  '/site-petit-prix/css/styles.css',
-  '/site-petit-prix/js/script.js',
-  '/site-petit-prix/icons/icon-512.png',
+  '/site-petit-prix/public/css/styles.css',
+  '/site-petit-prix/public/js/script.js',
+  '/site-petit-prix/public/img/icon-512.png',
 
   // 📄 صفحاتك الأساسية
   '/site-petit-prix/SoinsdelapeauCosmetiques/',
@@ -19,7 +19,7 @@ const urlsToCache = [
   '/site-petit-prix/HygieneSoinsPersonnels/',
   '/site-petit-prix/AppareilsAccessoiresSante/',
   '/site-petit-prix/Politiquedeconfidentialite/',
-  '/site-petit-prix/Conditionsdutilisation/'
+  '/site-petit-prix/Conditionsdutilisation/',
 ];
 
 // 🟢 تثبيت Service Worker وتخزين الملفات
