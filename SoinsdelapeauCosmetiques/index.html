@@ -57,24 +57,25 @@
   </head>
   <body>
     <nav
-      class="navbar navbar-expand-lg shadow-sm"
+      class="navbar navbar-expand-lg shadow-sm py-2"
       id="mainNavbar"
       style="background: #ffffff; border-bottom: 2px solid #e0e0e0"
     >
-      <div class="container">
+      <div class="container-fluid px-4">
+        <!-- ✅ Logo à gauche -->
         <a
           class="navbar-brand d-flex align-items-center gap-2"
-          href="/"
+          href="../"
         >
           <img
-            class="logo"
             src="../public/img/icon-512.png"
-            alt=""
-            style="width: 40px; height: 40px; border-radius: 10px"
+            alt="Logo"
+            style="width: 38px; height: 38px; border-radius: 10px"
           />
-          <span style="font-weight: 700; color: #2e7d32; font-size: 1.2em">Para Petit Prix</span>
+          <span style="font-weight: 700; color: #2e7d32; font-size: 1.1em"> Para Petit Prix </span>
         </a>
 
+        <!-- ✅ Bouton toggle pour mobile -->
         <button
           class="navbar-toggler"
           type="button"
@@ -87,87 +88,94 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
+        <!-- ✅ Liens alignés à droite -->
         <div
-          class="collapse navbar-collapse"
+          class="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
-          <ul class="navbar-nav ms-auto text-center">
+          <ul class="navbar-nav text-center">
             <li class="nav-item">
               <a
-                class="nav-link"
-                href="/"
+                class="nav-link px-3 small"
+                href="../"
               >
-                <i class="fa-solid fa-house"></i> Accueil
+                <i class="fa-solid fa-house me-1"></i> Accueil
               </a>
             </li>
             <li class="nav-item">
-  <a class="nav-link" href="../ProduitPromotion/">
-    <i class="fa-solid fa-tags" style="color:#2e7d32;"></i>
-    Produits en Promotion
-  </a>
-</li>
+              <a
+                class="nav-link px-3 small"
+                href="../ProduitPromotion/"
+              >
+                <i
+                  class="fa-solid fa-tags me-1"
+                  style="color: #2e7d32"
+                ></i>
+                Promotions
+              </a>
+            </li>
             <li class="nav-item">
               <a
-                class="nav-link active"
+                class="nav-link px-3 small active"
                 href="../SoinsdelapeauCosmetiques/"
               >
-                <i class="fa-solid fa-spa"></i> Soins de la peau & Cosmétiques
+                <i class="fa-solid fa-spa me-1"></i> Soins & Cosmétiques
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link px-3 small"
                 href="../CheveuxBeaute/"
               >
-                <i class="fa-solid fa-wand-magic-sparkles"></i> Cheveux & Beauté
+                <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Cheveux & Beauté
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link px-3 small"
                 href="../VitaminesComplementsAlimentaires/"
               >
-                <i class="fa-solid fa-capsules"></i> Vitamines & Compléments Alimentaires
+                <i class="fa-solid fa-capsules me-1"></i> Vitamines & Compléments
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link px-3 small"
                 href="#latest-medicines"
               >
-                <i class="fa-solid fa-baby"></i> Maternité & Produits Bébé
+                <i class="fa-solid fa-baby me-1"></i> Maternité & Bébé
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link px-3 small"
                 href="../HygieneSoinsPersonnels/"
               >
-                <i class="fa-solid fa-soap"></i> Hygiène & Soins Personnels
+                <i class="fa-solid fa-soap me-1"></i> Hygiène & Soins
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link px-3 small"
                 href="#latest-medicines"
               >
-                <i class="fa-solid fa-apple-whole"></i> Nutrition & Produits Minceur
+                <i class="fa-solid fa-apple-whole me-1"></i> Nutrition & Minceur
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link"
+                class="nav-link px-3 small"
                 href="#latest-medicines"
               >
-                <i class="fa-solid fa-droplet"></i> Huiles Essentielles & Aromathérapie
+                <i class="fa-solid fa-droplet me-1"></i> Huiles & Aromathérapie
               </a>
             </li>
             <li class="nav-item">
               <a
-                class="nav-link "
+                class="nav-link px-3 small"
                 href="../AppareilsAccessoiresSante/"
               >
-                <i class="fa-solid fa-stethoscope"></i> Appareils & Accessoires Santé
+                <i class="fa-solid fa-stethoscope me-1"></i> Appareils Santé
               </a>
             </li>
           </ul>
@@ -279,7 +287,7 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <script>
+    <script>
       // 🛒 السلة العالمية
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
@@ -466,6 +474,6 @@
 
       document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
-        <script src="../public/js/script.js"></script>
+    <script src="../public/js/script.js"></script>
   </body>
 </html>

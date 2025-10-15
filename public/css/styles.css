@@ -122,17 +122,17 @@ h6 {
   color: #1b5e20;
   transform: translateY(-2px);
 }
-      #mainNavbar .nav-link.active {
-        background-color: #2e7d32;
-        color: #fff !important;
-        font-weight: 600;
-      }
-      #mainNavbar .nav-link.active i {
-        color: #fff;
-      }
-      .navbar-brand span {
-        font-family: 'Poppins', sans-serif;
-      }
+#mainNavbar .nav-link.active {
+  background-color: #2e7d32;
+  color: #fff !important;
+  font-weight: 600;
+}
+#mainNavbar .nav-link.active i {
+  color: #fff;
+}
+.navbar-brand span {
+  font-family: 'Poppins', sans-serif;
+}
 .navbar.scrolled {
   background-color: rgba(255, 255, 255, 0.98);
   padding-top: 10px;
