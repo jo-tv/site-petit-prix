@@ -2,7 +2,7 @@
   "name": "Site Petit Prix",
   "short_name": "PetitPrix",
   "description": "Un site pour découvrir les produits de soins et beauté à petit prix.",
-  "start_url": "/site-petit-prix/index.html",
+  "start_url": "/site-petit-prix/",
   "scope": "/site-petit-prix/",
   "display": "standalone",
   "background_color": "#ffffff",

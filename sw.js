@@ -2,7 +2,6 @@
 const CACHE_NAME = 'site-petit-prix-v1';
 const urlsToCache = [
   '/site-petit-prix/',
-  '/site-petit-prix/index.html',
   '/site-petit-prix/sitemap.xml',
   '/site-petit-prix/robots.txt',
 
