@@ -181,43 +181,10 @@ const cartCount = document.getElementById('cart-count');
 const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 const whatsappBtn = document.getElementById('whatsapp-btn');
-
-// استرجاع السلة من localStorage أو إنشاء جديدة
+// 🛒 استرجاع السلة من localStorage أو إنشاء جديدة
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// تحديث السلة عند تحميل الصفحة
-updateCart();
-
-// فتح / إغلاق السلة
-cartIcon.addEventListener('click', () => cartPopup.classList.add('active'));
-closeBtn.addEventListener('click', () => cartPopup.classList.remove('active'));
-
-// استهداف كل الأزرار داخل product-card و medicine-card
-// 🟢 Delegation
-document.getElementById('productList').addEventListener('click', function (e) {
-  if (e.target.closest('.add-to-cart')) {
-    e.preventDefault();
-
-    const card = e.target.closest('.product-card, .medicine-card');
-    const title = card.querySelector('.card-title').innerText;
-    const priceText = card
-      .querySelector('.price')
-      .innerText.replace('DH', '')
-      .replace('$', '')
-      .trim();
-    const price = parseFloat(priceText.replace(',', '.'));
-    const imgSrc = card.querySelector('img').src;
-
-    const existing = cart.find((item) => item.title === title);
-    if (existing) {
-      existing.qty++;
-    } else {
-      cart.push({ title, price, qty: 1, imgSrc });
-    }
-    updateCart();
-  }
-});
-
+// ✅ دالة لتحديث السلة
 function updateCart() {
   cartCount.innerText = cart.reduce((acc, item) => acc + item.qty, 0);
   cartItemsContainer.innerHTML = '';
@@ -226,47 +193,56 @@ function updateCart() {
     const div = document.createElement('div');
     div.className = 'cart-item d-flex align-items-center mb-2';
     div.innerHTML = `
-        <img src="${item.imgSrc}" alt="${
-          item.title
-        }" style="width:60px; height:60px; object-fit:cover; margin-right:10px;">
-        <div class="cart-item-details flex-grow-1">
-          <span style="color:red;margin:5px auto">${item.title}</span>
-          <span style="
-            color: #000;
-            margin: 6px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.95em;
-            gap: 8px;
-            background: #f8f9fa;
-            padding: 6px 10px;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-          ">
-            <span style="display: flex; align-items: center; gap: 3px;">
-              <i class="fa-solid fa-tag" style="color:#3cc743;"></i>
-              ${item.price}
-            </span>
-          
-            <span style="display: flex; align-items: center; gap: 5px;">
-              <i class="fa-solid fa-xmark" style="color:#555;"></i>
-              ${item.qty}
-            </span>
-          
-            <span style="display: flex; align-items: center; gap: 5px; font-weight: 600; color:#d32f2f;">
-              <i class="fa-solid fa-coins"></i>
-              ${(item.price * item.qty).toFixed(2)} DH
-            </span>
+      <img src="${item.imgSrc}" alt="${item.title}"
+        style="width:60px; height:60px; object-fit:cover; margin-right:10px; border-radius:8px;">
+      <div class="cart-item-details flex-grow-1">
+        <span style="color:red;margin:5px auto; display:block; font-weight:600;">
+          ${item.title}
+        </span>
+        <div style="
+          color:#000; margin:6px auto; display:flex; justify-content:space-between;
+          align-items:center; font-size:0.85em; gap:6px; background:#f8f9fa;
+          padding:6px 10px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.1);
+        ">
+          <span style="display:flex; align-items:center; gap:5px;">
+            <i class="fa-solid fa-tag" style="color:#2e7d32;"></i>
+            ${item.price.toFixed(2)}
+          </span>
+
+          <span style="display:flex; align-items:center; gap:5px;">
+            x
+            <input type="number" min="1" value="${item.qty}" class="qty-input"
+              data-index="${index}" style="width:35px; text-align:center;
+              border:1px solid #ccc; border-radius:5px; padding:2px 4px;">
+          </span>
+
+          <span style="display:flex; align-items:center; gap:5px; font-weight:600; color:#d32f2f;">
+            <i class="fa-solid fa-coins"></i>
+            ${(item.price * item.qty).toFixed(2)} DH
           </span>
         </div>
-        <button data-index="${index}" class="btn btn-sm btn-danger">&times;</button>
-      `;
+      </div>
+
+      <button data-index="${index}" class="btn btn-sm btn-danger" title="Supprimer l’article">
+        &times;
+      </button>
+    `;
+
     cartItemsContainer.appendChild(div);
 
+    // 🗑️ زر الحذف
     div.querySelector('button').addEventListener('click', () => {
       cart.splice(index, 1);
-      localStorage.setItem('cart', JSON.stringify(cart));
+      saveCart();
+      updateCart();
+    });
+
+    // ✏️ تعديل الكمية
+    div.querySelector('.qty-input').addEventListener('change', (e) => {
+      let newQty = parseInt(e.target.value);
+      if (isNaN(newQty) || newQty < 1) newQty = 1;
+      cart[index].qty = newQty;
+      saveCart();
       updateCart();
     });
   });
@@ -275,21 +251,62 @@ function updateCart() {
   cartTotal.innerText = `Total: ${total.toFixed(2)} DH`;
 }
 
-// إرسال عبر واتساب
+// ✅ دالة لحفظ السلة في localStorage
+function saveCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
+
+// ✅ عند تحميل الصفحة، استرجاع السلة
+document.addEventListener('DOMContentLoaded', () => {
+  updateCart();
+});
+
+// ✅ التعامل مع الأزرار "Ajouter au panier"
+document.getElementById('productList').addEventListener('click', function (e) {
+  const btn = e.target.closest('.add-to-cart');
+  if (!btn) return;
+  e.preventDefault();
+
+  const card = e.target.closest('.product-card, .medicine-card');
+  const title = card.querySelector('.card-title').innerText;
+  const priceText = card
+    .querySelector('.price')
+    .innerText.replace('DH', '')
+    .replace('$', '')
+    .trim();
+  const price = parseFloat(priceText.replace(',', '.'));
+  const imgSrc = card.querySelector('img').src;
+
+  const existing = cart.find((item) => item.title === title);
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ title, price, qty: 1, imgSrc });
+  }
+
+  saveCart();
+  updateCart();
+});
+
+// 🟢 فتح / إغلاق السلة
+cartIcon.addEventListener('click', () => cartPopup.classList.add('active'));
+closeBtn.addEventListener('click', () => cartPopup.classList.remove('active'));
+
+// 🟢 إرسال عبر واتساب
 whatsappBtn.addEventListener('click', () => {
   if (cart.length === 0) return alert('Votre panier est vide !');
   let message = 'Bonjour, je souhaite commander :%0A';
   cart.forEach((item) => {
-    message += `- ${item.title} x${item.qty} : ${(item.price * item.qty).toFixed(2)} DH%0A`;
+    message += `- 🆔${item.title} [ 💲${item.price} DH x ${item.qty}] = ${(
+      item.price * item.qty
+    ).toFixed(2)} DH%0A`;
   });
   const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
-  message += `Total: ${total.toFixed(2)} DH`;
+  message += `%0A🛍️ Total: ${total.toFixed(2)} DH`;
 
-  // رقم واتساب (استبدله بالرقم الفعلي)
   const whatsappNumber = '212601862102';
   window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 });
-
 document.getElementById('whatsappForm').addEventListener('submit', function (e) {
   e.preventDefault();
   const phone = document.getElementById('clientPhone').value.trim();
@@ -310,5 +327,3 @@ document.getElementById('whatsappForm').addEventListener('submit', function (e) 
   // ouvrir WhatsApp
   window.open(whatsappURL, '_blank');
 });
-
-
