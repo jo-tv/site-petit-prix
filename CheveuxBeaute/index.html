@@ -319,7 +319,7 @@
 
           // فلترة المنتجات حسب الرؤية والفئة
           const filteredProducts = products.filter(
-            (p) => p.visibility === 'oui' && p.category === 'cheveux_beaute'
+            (p) => p.visibility === 'oui' && p.promotion === 'non' && p.category === 'cheveux_beaute'
           );
 
           // إذا لم توجد منتجات بعد الفلترة

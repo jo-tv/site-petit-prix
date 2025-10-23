@@ -318,7 +318,7 @@
 
           // فلترة المنتجات حسب الرؤية والفئة
           const filteredProducts = products.filter(
-            (p) => p.visibility === 'oui' && p.category === 'appareils_sante'
+            (p) => p.visibility === 'oui' && p.promotion === 'non' && p.category === 'appareils_sante'
           );
 
           // إذا لم توجد منتجات بعد الفلترة

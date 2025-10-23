@@ -318,7 +318,7 @@ container.innerHTML = "";
 
 // فلترة المنتجات حسب الرؤية والفئة
 const filteredProducts = products.filter(
-  (p) => p.visibility === 'oui' && p.category === 'aromatherapie'
+  (p) => p.visibility === 'oui' && p.promotion === 'non' && p.category === 'aromatherapie'
 );
 
 // إذا لم توجد منتجات بعد الفلترة

@@ -183,7 +183,6 @@
       </div>
     </nav>
 
-
     <section
       id="latest-medicines"
       class="section-padding bg-light"
@@ -318,6 +317,7 @@
 
           products.forEach((p) => {
             if (!(p.visibility === 'oui' && p.promotion === 'oui')) return;
+            // إذا لم توجد منتجات بعد الفلترة
 
             const card = document.createElement('div');
             card.className = 'col-md-6 col-lg-3 mb-4';
@@ -328,70 +328,79 @@
                 : 'https://i.postimg.cc/MTVhPR2k/Logo-Wiz-30092025-183434.png';
 
             card.innerHTML = `
-          <div class="medicine-card" style="position: relative; overflow: hidden; border: 1px solid #eee; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-            <!-- 🔥 شارة الخصم -->
-            <div style="
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                background: #e53935;
-                color: white;
-                padding: 5px 10px;
-                border-radius: 20px;
-                font-weight: bold;
-                font-size: 0.9em;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-                display: flex;
-                align-items: center;
-                gap: 5px;
-              ">
-              <i class="fa-solid fa-fire"></i> -25%
-            </div>
-          
-            <img src="${imageUrl}" alt="${
-              p.name
-            }" style="width: 100%; border-bottom: 1px solid #ddd;" />
-            
-            <div class="card-body" style="padding: 12px;">
-              <h5 class="card-title" style="font-weight: bold;">${p.name}</h5>
-              <p class="card-text text-muted" style="min-height: 40px;">
-                ${
-                  p.description && p.description.trim() !== ''
-                    ? p.description
-                    : p.category
-                    ? p.category.replace('_', ' ')
-                    : 'Sans description'
-                }
-              </p>
-          
-              <!-- 💸 الأسعار -->
-              <div class="divPrice" style="margin: 10px 0; width:100%">
-                <p class="price" style="margin: 0;">
-                  <i class="fa-solid fa-tag"></i>
-                  <span style="text-decoration: line-through; color:
-                  #888;margin-left : 10px">
-                    ${Number(p.price).toFixed(2)} DH
-                  </span>
-                </p>
-                <p class="pricePromo" style="color: #e53935; font-weight: bold; font-size: 1.1em; margin: 3px 0 0;">
-                  <i class="fa-solid fa-bolt"></i>
-                  ${Number(p.price * 0.75).toFixed(2)} DH
-                  <small style="color:#388e3c; font-size:0.9em;">(-25%)</small>
-                </p>
+              <div class="medicine-card" style="position: relative; overflow: hidden; border: 1px solid #eee; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                <!-- 🔥 شارة الخصم -->
+                <div style="
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    background: #e53935;
+                    color: white;
+                    padding: 5px 10px;
+                    border-radius: 20px;
+                    font-weight: bold;
+                    font-size: 0.9em;
+                    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                  ">
+                  <i class="fa-solid fa-fire"></i> - ${(
+                    ((Number(p.price) - Number(p.pricePromo)) / Number(p.price)) *
+                    100
+                  ).toFixed(2)} %
+
+                </div>
+
+                <img src="${imageUrl}" alt="${
+                  p.name
+                }" style="width: 100%; border-bottom: 1px solid #ddd;" />
+
+                <div class="card-body" style="padding: 12px;">
+                  <h5 class="card-title" style="font-weight: bold;">${p.name}</h5>
+                  <p class="card-text text-muted" style="min-height: 40px;">
+                    ${
+                      p.description && p.description.trim() !== ''
+                        ? p.description
+                        : p.category
+                        ? p.category.replace('_', ' ')
+                        : 'Sans description'
+                    }
+                  </p>
+
+                  <!-- 💸 الأسعار -->
+                  <div class="divPrice" style="margin: 10px 0; width:100%">
+                    <p class="price" style="margin: 0;">
+                      <i class="fa-solid fa-tag"></i>
+                      <span style="text-decoration: line-through; color:
+                      #888;margin-left : 10px">
+                        ${Number(p.price).toFixed(2)} DH
+                      </span>
+                    </p>
+                    <p class="pricePromo" style="color: #e53935; font-weight: bold; font-size: 1.1em; margin: 3px 0 0;">
+                      <i class="fa-solid fa-bolt"></i>
+                      ${Number(p.pricePromo).toFixed(2)} DH
+                      <small style="color:#388e3c; font-size:0.9em;">(-${(
+                        ((Number(p.price) - Number(p.pricePromo)) / Number(p.price)) *
+                        100
+                      ).toFixed(2)} %)</small>
+                    </p>
+                  </div>
+
+                  <p class="stock" style="font-size: 0.9em;">📦 Stock : <span>${
+                    p.quantity
+                  }</span></p>
+
+                  <a href="#"
+                    class="btn btn-outline-primary btn-sm w-100 add-to-cart"
+                    data-title="${p.name}"
+                    data-price="${Number(p.pricePromo).toFixed(2)}"
+                    data-img="${imageUrl}">
+                    <i class="fas fa-cart-plus me-2"></i> Ajouter au panier
+                  </a>
+                </div>
               </div>
-          
-              <p class="stock" style="font-size: 0.9em;">📦 Stock : <span>${p.quantity}</span></p>
-          
-              <a href="#"
-                class="btn btn-outline-primary btn-sm w-100 add-to-cart"
-                data-title="${p.name}"
-                data-price="${Number(p.price * 0.75).toFixed(2)}"
-                data-img="${imageUrl}">
-                <i class="fas fa-cart-plus me-2"></i> Ajouter au panier
-              </a>
-            </div>
-          </div>
-        `;
+            `;
             container.appendChild(card);
           });
 
@@ -435,42 +444,42 @@
           const div = document.createElement('div');
           div.className = 'cart-item d-flex align-items-center mb-2';
           div.innerHTML = `
-        <img src="${item.imgSrc}" alt="${
-          item.title
-        }" style="width:60px; height:60px; object-fit:cover; margin-right:10px;">
-        <div class="cart-item-details flex-grow-1">
-          <span style="color:red;margin:5px auto">${item.title}</span>
-          <span style="
-            color: #000;
-            margin: 6px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.95em;
-            gap: 8px;
-            background: #f8f9fa;
-            padding: 6px 10px;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-          ">
-            <span style="display: flex; align-items: center; gap: 5px;">
-              <i class="fa-solid fa-tag" style="color:#2e7d32;"></i>
-              ${item.price} 
-            </span>
-          
-            <span style="display: flex; align-items: center; gap: 5px;">
-              <i class="fa-solid fa-xmark" style="color:#555;"></i>
-              ${item.qty}
-            </span>
-          
-            <span style="display: flex; align-items: center; gap: 5px; font-weight: 600; color:#d32f2f;">
-              <i class="fa-solid fa-coins"></i>
-              ${(item.price * item.qty).toFixed(2)} DH
-            </span>
-          </span>
-        </div>
-        <button data-index="${index}" class="btn btn-sm btn-danger">&times;</button>
-      `;
+            <img src="${item.imgSrc}" alt="${
+              item.title
+            }" style="width:60px; height:60px; object-fit:cover; margin-right:10px;">
+            <div class="cart-item-details flex-grow-1">
+              <span style="color:red;margin:5px auto">${item.title}</span>
+              <span style="
+                color: #000;
+                margin: 6px 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 0.95em;
+                gap: 8px;
+                background: #f8f9fa;
+                padding: 6px 10px;
+                border-radius: 8px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+              ">
+                <span style="display: flex; align-items: center; gap: 5px;">
+                  <i class="fa-solid fa-tag" style="color:#2e7d32;"></i>
+                  ${item.price}
+                </span>
+
+                <span style="display: flex; align-items: center; gap: 5px;">
+                  <i class="fa-solid fa-xmark" style="color:#555;"></i>
+                  ${item.qty}
+                </span>
+
+                <span style="display: flex; align-items: center; gap: 5px; font-weight: 600; color:#d32f2f;">
+                  <i class="fa-solid fa-coins"></i>
+                  ${(item.price * item.qty).toFixed(2)} DH
+                </span>
+              </span>
+            </div>
+            <button data-index="${index}" class="btn btn-sm btn-danger">&times;</button>
+          `;
           cartItemsContainer.appendChild(div);
 
           div.querySelector('button').addEventListener('click', () => {
@@ -486,19 +495,19 @@
 
       // إرسال الطلب عبر واتساب
       whatsappBtn.addEventListener('click', () => {
-  if (cart.length === 0) return alert('Votre panier est vide !');
-  let message = 'Bonjour, je souhaite commander :%0A';
-  cart.forEach((item) => {
-    message += `- 🆔${item.title} [ 💲${item.price} DH x ${item.qty}] = ${(
-      item.price * item.qty
-    ).toFixed(2)} DH%0A`;
-  });
-  const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
-  message += `%0A🛍️ Total: ${total.toFixed(2)} DH`;
+        if (cart.length === 0) return alert('Votre panier est vide !');
+        let message = 'Bonjour, je souhaite commander :%0A';
+        cart.forEach((item) => {
+          message += `- 🆔${item.title} [ 💲${item.price} DH x ${item.qty}] = ${(
+            item.price * item.qty
+          ).toFixed(2)} DH%0A`;
+        });
+        const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
+        message += `%0A🛍️ Total: ${total.toFixed(2)} DH`;
 
-  const whatsappNumber = '212601862102';
-  window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
-});
+        const whatsappNumber = '212601862102';
+        window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
+      });
 
       document.addEventListener('DOMContentLoaded', loadProducts);
     </script>
