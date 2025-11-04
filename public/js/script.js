@@ -304,7 +304,7 @@ whatsappBtn.addEventListener('click', () => {
   const total = cart.reduce((acc, item) => acc + item.price * item.qty, 0);
   message += `%0A🛍️ Total: ${total.toFixed(2)} DH`;
 
-  const whatsappNumber = '212601862102';
+  const whatsappNumber = '212679547979';
   window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
 });
 document.getElementById('whatsappForm').addEventListener('submit', function (e) {
@@ -317,7 +317,7 @@ document.getElementById('whatsappForm').addEventListener('submit', function (e) 
   }
 
   // numéro de la parapharmacie
-  const adminNumber = '212601862102'; // format international (Maroc = 212)
+  const adminNumber = '212679547979'; // format international (Maroc = 212)
   const message =
     'Bonjour, je souhaite rejoindre le groupe Para Petit Prix pour recevoir les offres et nouveautés.';
   const whatsappURL = `https://wa.me/${adminNumber}?text=${encodeURIComponent(
