@@ -5,7 +5,7 @@
 
   <!-- الصفحة الرئيسية -->
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/</loc>
+    <loc>https://parapetitprix.com/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -13,43 +13,55 @@
 
   <!-- صفحة المنتجات -->
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/SoinsdelapeauCosmetiques/</loc>
+    <loc>https://parapetitprix.com/SoinsdelapeauCosmetiques/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/ProduitPromotion/</loc>
+    <loc>https://parapetitprix.com/ProduitPromotion/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/CheveuxBeaute/</loc>
+    <loc>https://parapetitprix.com/CheveuxBeaute/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/VitaminesComplementsAlimentaires/</loc>
+    <loc>https://parapetitprix.com/VitaminesComplementsAlimentaires/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/VitaminesComplementsAlimentaires/</loc>
+    <loc>https://parapetitprix.com/Maternite-ProduitsBebe/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/HygieneSoinsPersonnels/</loc>
+    <loc>https://parapetitprix.com/HygieneSoinsPersonnels/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/AppareilsAccessoiresSante/</loc>
+    <loc>https://parapetitprix.com/Nutrition-Produits-Minceur/</loc>
+    <lastmod>2025-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://parapetitprix.com/Huiles-Essentielles-Aromatherapie/</loc>
+    <lastmod>2025-10-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://parapetitprix.com/AppareilsAccessoiresSante/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -57,13 +69,13 @@
 
   <!-- صفحة البحث -->
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/Politiquedeconfidentialit%C3%A9/</loc>
+    <loc>https://parapetitprix.com/Politiquedeconfidentialit%C3%A9/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/Conditionsd%E2%80%99utilisation/</loc>
+    <loc>https://parapetitprix.com/Conditionsd%E2%80%99utilisation/</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -71,7 +83,7 @@
 
   <!-- صفحة الاتصال -->
   <url>
-    <loc>https://jo-tv.github.io/site-petit-prix/#reclamations</loc>
+    <loc>https://parapetitprix.com/#reclamations</loc>
     <lastmod>2025-10-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
